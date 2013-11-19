@@ -1,10 +1,15 @@
-mixture <- function(y, method = c("newton", "EM"), maxit, tol = 1e-8, param0 = NULL) {
-        stopifnot(maxit > 0)
+mixture <- function(y, method = c("newton", "EM"), maxit = NULL, tol = 1e-8,
+                    param0 = NULL) {
         method <- match.arg(method)
-        maxit <- as.integer(maxit)
         switch(method,
-               newton = newton.mix(y, param0, maxit, tol),
-               EM = em.mix(y, param0, maxit))
+               newton = {
+                       maxit <- 100
+                       newton.mix(y, param0, maxit, tol)
+               },
+               EM = {
+                       maxit <- 500
+                       em.mix(y, param0, maxit)
+               })
 }
 
 newton.mix <- function(y, param0, maxit, tol) {
