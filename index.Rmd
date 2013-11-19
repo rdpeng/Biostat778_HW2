@@ -38,4 +38,49 @@ directory.
 as the expected results will also be in the tests directory.
 
 
+## Mixture Model
 
+ Consider data $y_1,y_2,\dots,y_n$
+which are iid from a mixture of 2 Normal distributions,
+
+\[
+y_i \sim \lambda\mathcal{N}(\mu_1,\sigma_1^2)+(1-\lambda)\mathcal{N}(\mu_2,\sigma_2^2)
+\]
+
+Write a function that estimates the unknown parameters $\lambda$,
+$\mu_1$, $\mu_2$, $\sigma_1^2$, and $\sigma_2^2$ using either Newton's
+method or the EM algorithm.
+
+* There should be a `method` argument that takes options "newton" or
+  "EM" to allow the user to choose which fitting method is used
+
+* Your function should return a list with elements `mle` containing
+  the vector of maximum likelihood estimates and `stderr` containing
+  the vector of corresponding asymptotic standard errors for the
+  MLEs. The elements of both the `mle` and `stderr` vectors should be
+  **named** with the following names: `lambda`, `mu1`, `mu2`,
+  `sigma1`, `sigma2`.
+
+* There should be a `param0` argument that allows users to specify the
+  starting value for either the Newton or the EM algorithm. The
+  default value for `param0` should be `NULL`, in which case your
+  function should choose the starting value.
+
+* Your function should check to see that the value specified for
+  `method` is valid. The easiest way to do this is with the
+  `match.arg()` function.
+
+* Place your function in an R package with appropriate documentation.
+
+* You can test your function with the data provided in the Git repository. 
+
+Your function should follow the following prototype:
+
+```{r}
+mixture <- function(y, method, param0 = NULL) {
+	## Your code goes here
+
+	## Return a list with elements `mle' for the maximum likelhood
+	## estimates and `stderr' for their standard errors.
+}
+```
