@@ -16,18 +16,27 @@ newton.mix <- function(y, param0, maxit, tol) {
         grad <- deriv3(~ log(lambda * dnorm((x - m1)/s1)/s1 + (1-lambda) * dnorm((x-m2)/s2)/s2), c("lambda", "m1", "m2", "s1", "s2"), c("y", "lambda", "m1", "m2", "s1", "s2"))
         drv <- function(y, param) {
                 g <- grad(y, param[1], param[2], param[3], param[4], param[5])
-                list(gradient = colSums(attr(g, "gradient")),
+                list(likelihood = sum(g),
+                     gradient = colSums(attr(g, "gradient")),
                      hessian = colSums(attr(g, "hessian"), dims = 1))
         }
+        d <- drv(y, param0)
+        ll0 <- d$likelihood
+        grad <- d$gradient
+        hess <- d$hessian
         for(i in seq_len(maxit)) {
-                d <- drv(y, param0)
-                grad <- d$gradient
-                hess <- d$hessian
                 param <- solve(hess, hess %*% param0 - grad)
-                delta <- abs(param - param0)
+                d <- drv(y, param)
+                ll <- d$likelihood
+                delta <- abs(ll - ll0)
                 if(delta < tol) {
                         convergence <- 0
                         break
+                }
+                else {
+                        ll0 <- ll
+                        grad <- d$gradient
+                        hess <- d$hessian
                 }
         }
         if(i == maxit && delta >= tol)
