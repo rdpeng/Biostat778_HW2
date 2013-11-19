@@ -1,4 +1,4 @@
-Biostat778_HW1
+Biostat778_HW2
 ==============
 
 Homework 2 for Biostat 778
