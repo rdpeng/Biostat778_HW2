@@ -83,7 +83,7 @@ method or the EM algorithm.
 Your function should follow the following prototype:
 
 ```{r}
-mixture <- function(y, method, param0 = NULL) {
+mixture <- function(y, method, maxit = NULL, tol = 1e-8, param0 = NULL) {
 	## Your code goes here
 
 	## Return a list with elements `mle' for the maximum likelhood
