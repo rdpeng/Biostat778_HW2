@@ -1,0 +1,41 @@
+Homework 2 for Biostat 778
+==============
+
+
+## Due: December 4, 2013
+
+## Setup
+
+In order to do this homework you must
+
+1.  **Fork** the
+[Biostat778_HW2](https://github.com/rdpeng/Biostat778_HW2) repository
+on GitHub
+
+2.  Once you have forked the repository on GitHub, you can **clone**
+it to your local computer to actually do the work.
+
+3.  As you are working, make sure to commit changes at logical points
+via `git add` and `git commit`.
+
+4.  Once you have completed the assignment, you can push your changes
+back to your GitHub repository via `git push`.
+
+5.  Once you have pushed your changes, make a **pull request** on
+GitHub so that I can see that you're ready to submit your homework.
+
+7.  Your finished code should be submitted in the form of an **R
+package**. The R package should be named **Homework2**.
+
+8.  Your R package should pass `R CMD check` without any warnings,
+errors, or notes.
+
+9.  I will put unit tests in the `tests` directory of the R package
+for the `master` branch. Please DO NOT make any changes in the `tests`
+directory.
+
+10.  You can use the tests in the `tests` directory to check your code
+as the expected results will also be in the tests directory.
+
+
+
