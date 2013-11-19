@@ -76,6 +76,14 @@ method or the EM algorithm.
   `method` is valid. The easiest way to do this is with the
   `match.arg()` function.
 
+* There should be a `maxit' argument specifying the maximum number of
+  iterations for each method. It defaults to `NULL`, in which case
+  `maxit` should be 100 for Newton's method and 500 for the EM
+  algorithm.
+
+* There should be a `tol` argument that controls the tolerance for
+  convergence and it should default to `1e-8`.
+
 * Place your function in an R package with appropriate documentation.
 
 * You can test your function with the data provided in the Git repository. 

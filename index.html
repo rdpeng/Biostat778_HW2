@@ -244,13 +244,19 @@ function should choose the starting value.</p></li>
 <li><p>Your function should check to see that the value specified for
 <code>method</code> is valid. The easiest way to do this is with the
 <code>match.arg()</code> function.</p></li>
+<li><p>There should be a <code>maxit&#39; argument specifying the maximum number of
+iterations for each method. It defaults to</code>NULL<code>, in which case
+</code>maxit should be 100 for Newton&#39;s method and 500 for the EM
+algorithm.</p></li>
+<li><p>There should be a <code>tol</code> argument that controls the tolerance for
+convergence and it should default to <code>1e-8</code>.</p></li>
 <li><p>Place your function in an R package with appropriate documentation.</p></li>
 <li><p>You can test your function with the data provided in the Git repository. </p></li>
 </ul>
 
 <p>Your function should follow the following prototype:</p>
 
-<pre><code class="r">mixture &lt;- function(y, method, param0 = NULL) {
+<pre><code class="r">mixture &lt;- function(y, method, maxit = NULL, tol = 1e-08, param0 = NULL) {
     ## Your code goes here
 
     ## Return a list with elements `mle&#39; for the maximum likelhood estimates and
