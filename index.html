@@ -227,6 +227,8 @@ method or the EM algorithm.</p>
 <ul>
 <li><p>There should be a <code>method</code> argument that takes options &ldquo;newton&rdquo; or
 &ldquo;EM&rdquo; to allow the user to choose which fitting method is used</p></li>
+<li><p>For the &ldquo;newton&rdquo; method you may be interested in using the <code>deriv</code>
+or <code>deriv3</code> functions.</p></li>
 <li><p>Your function should return a list with elements <code>mle</code> containing
 the vector of maximum likelihood estimates and <code>stderr</code> containing
 the vector of corresponding asymptotic standard errors for the

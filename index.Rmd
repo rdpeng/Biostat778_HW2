@@ -54,6 +54,9 @@ method or the EM algorithm.
 * There should be a `method` argument that takes options "newton" or
   "EM" to allow the user to choose which fitting method is used
 
+* For the "newton" method you may be interested in using the `deriv`
+  or `deriv3` functions.
+
 * Your function should return a list with elements `mle` containing
   the vector of maximum likelihood estimates and `stderr` containing
   the vector of corresponding asymptotic standard errors for the
