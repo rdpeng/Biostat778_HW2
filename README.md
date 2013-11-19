@@ -1,7 +1,5 @@
-Biostat778_HW2
-==============
-
 Homework 2 for Biostat 778
+==============
 
 Due: December 4, 2013
 
