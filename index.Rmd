@@ -51,6 +51,9 @@ Write a function that estimates the unknown parameters $\lambda$,
 $\mu_1$, $\mu_2$, $\sigma_1^2$, and $\sigma_2^2$ using either Newton's
 method or the EM algorithm.
 
+* Do not use the `optim`, `nlm`, `nlminb`, or `optimize` functions in
+  your code.
+
 * There should be a `method` argument that takes options "newton" or
   "EM" to allow the user to choose which fitting method is used
 

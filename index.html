@@ -225,6 +225,8 @@ y_i \sim \lambda\mathcal{N}(\mu_1,\sigma_1^2)+(1-\lambda)\mathcal{N}(\mu_2,\sigm
 method or the EM algorithm.</p>
 
 <ul>
+<li><p>Do not use the <code>optim</code>, <code>nlm</code>, <code>nlminb</code>, or <code>optimize</code> functions in
+your code.</p></li>
 <li><p>There should be a <code>method</code> argument that takes options &ldquo;newton&rdquo; or
 &ldquo;EM&rdquo; to allow the user to choose which fitting method is used</p></li>
 <li><p>For the &ldquo;newton&rdquo; method you may be interested in using the <code>deriv</code>
