@@ -1,0 +1,8 @@
+Package: Homework2
+Title: Code for Homework 2
+Description: Code for `mixture' via Newton's method and the EM algorithm
+Version: 1.1
+Author: Roger D. Peng <rpeng@jhsph.edu>
+Maintainer: Roger D. Peng <rpeng@jhsph.edu>
+License: GPL-3
+
