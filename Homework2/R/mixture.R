@@ -48,10 +48,42 @@ newton.mix <- function(y, param0, maxit, tol) {
         }
         if(i == maxit && delta >= tol)
                 convergence <- 1
-        hess <- drv(y, param)$hessian
-        list(mle = param, stderr = sqrt(diag(hess)), convergence = convergence)
+        vcov <- solve(hess)
+        list(mle = param, stderr = sqrt(diag(vcov)), convergence = convergence)
 }
 
 em.mix <- function(y, param0, maxit, tol) {
+        if(is.null(param0)) {
+                set.seed(10)
+                param0 <- c(lambda = 0.5, m1 = sample(y, 1),
+                            m2 = sample(y, 1), s1 = sd(y)/2, s2 = sd(y)/2)
+        }
+        for(i in seq_len(maxit)) {
+                plist <- as.list(param0)
+                z <- with(plist, (lambda * dnorm(y, m1, s1)) / (lambda*dnorm(y,m1,s1)+(1-lambda)*dnorm(y,m2,s2)))
+                lambda <- mean(z)
+                m1 <- weighted.mean(y, z)
+                m2 <- weighted.mean(y, 1 - z)
+                s1 <- with(plist, sqrt(sum(z * (y - m1)*(y - m1)) / sum(z)))
+                s2 <- with(plist, sqrt(sum((1-z) * (y-m2)*(y-m2)) / (sum(1-z))))
+                param <- c(lambda = lambda, m1 = m1, m2 = m2, s1 = s1, s2 = s2)
+                delta <- sqrt(sum((param - param0)^2))
+                cat(i, "delta:", delta, "\n")
+                if(delta < tol) {
+                        convergence <- 0
+                        break
+                }
+                else {
+                        param0 <- param
+                }
+        }
+        if(i == maxit && delta >= tol)
+                convergence <- 1
+        stderr <- compute.stderr(y, param)
+        list(mle = param, stderr = stderr, convergence = convergence)
+}
 
+## Compute standard errors using Louis's method
+compute.stderr <- function(y, param) {
+        rep(1, length(param))
 }
