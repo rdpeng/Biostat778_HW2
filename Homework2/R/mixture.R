@@ -35,7 +35,6 @@ newton.mix <- function(y, param0, maxit, tol) {
                 d <- drv(y, param)
                 ll <- d$likelihood
                 delta <- abs(ll - ll0)
-                cat(i, "delta:", delta, "\n")
                 if(delta < tol) {
                         convergence <- 0
                         break
