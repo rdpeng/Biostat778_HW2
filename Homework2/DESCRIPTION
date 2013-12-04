@@ -1,0 +1,9 @@
+Package: Homework2
+Type: Package
+Title: Solves for parameters in a mixture of 2 normal distributions
+Version: 1.0
+Date: 2013-12-04
+Author: Shan Andrews
+Maintainer: Shan Andrews <sandrews@jhsph.edu>
+Description: Takes in a vector of values and fits a mixture of 2 normal distributions to the data. Outputs MLEs and their standard errors, using Newton or EM algorithm. 
+License: NA
