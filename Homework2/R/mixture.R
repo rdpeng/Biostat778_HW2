@@ -94,8 +94,8 @@ break
 # Information Matrix (using complete data)
 bp = lambda*dnorm(y,mu1,sqrt(sig1))/(lambda*dnorm(y,mu1,sqrt(sig1))+(1-lambda)*dnorm(y,mu2,sqrt(sig2)))
 Slambda = bp/lambda-(1-bp)/(1-lambda)
-Smu1 = bp*(y-mu1)/sig1^2
-Smu2 = (1-bp)*(y-mu2)/sig2^2
+Smu1 = bp*(y-mu1)/sig1
+Smu2 = (1-bp)*(y-mu2)/sig2
 Ssig1 = bp/(2*sig1)*((y-mu1)^2/sig1-1)
 Ssig2 = (1-bp)/(2*sig2)*((y-mu2)^2/sig2-1)
 S = rbind(Slambda,Smu1,Smu2,Ssig1,Ssig2)
