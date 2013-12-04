@@ -54,8 +54,8 @@ if (is.null(maxit))  maxit = 500
 if (is.null(param0))
 {
 lambda = 0.5
-mu1 = 100
-mu2 = 2
+mu1 = 10
+mu2 = 30
 sig1 = 60
 sig2 = 150
 }
