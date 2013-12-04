@@ -1,0 +1,11 @@
+Package: Homework2
+Version: 1.0-0
+Date: 2013-12-3
+Title: Homework 2
+Description: Mixed Normal Distribution Parameter Estimation
+Author: Zhicheng Ji <zji4@jhu.edu>
+Maintainer: Zhicheng Ji <zji4@jhu.edu>
+License: GPL (>= 2)
+Depends:
+    R (>= 1.0.0)
+
