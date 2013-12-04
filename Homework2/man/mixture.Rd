@@ -44,8 +44,8 @@ Leslie Myint
 }
 \examples{
 set.seed(1)
-y1 = rnorm(100,5,1)
-y2 = rnorm(200,9,2)
+y1 = rnorm(10,5,1)
+y2 = rnorm(20,10,1)
 y = c(y1,y2)
 fitnewt = mixture(y,"newton")
 fitem = mixture(y,"EM")
