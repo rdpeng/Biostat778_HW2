@@ -8,7 +8,7 @@ MLE and stderr of mixture model parameters
 calculates MLE and standard error for mixture model parameters using either EM or newton method.
 }
 \usage{
-mixture(x)
+mixture(y, method, maxit = NULL, tol = 1e-08, param0 = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
