@@ -1,0 +1,10 @@
+Package: Homework2
+Title: Advanced Statistical Computing - Homework 2
+Description: This package contains a function for fitting a mixture model of two Gaussian distributsions for Homework 1 for Advanced Statistical Computing.
+Version: 1.0
+Author: Leslie Myint <lmyint1@jhu.edu>
+Maintainer: Leslie Myint <lmyint1@jhu.edu>
+Date: 2013-12-4
+License: GPL-3
+Collate:
+    'mixture.R'
