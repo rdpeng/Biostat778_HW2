@@ -115,11 +115,20 @@ get_stderr <- function(y, theta)
     I_inv <- tryCatch(
         solve(I), 
         error=function(cond){
-            stop("Information matrix is singular")
+            message("Information matrix is singular")
+            return(NULL)
     })
-    stderr <- diag(I_inv)
-    names(stderr) <- c("lambda", "mu1", "mu2", "sigma1", "sigma2")
-    sqrt(stderr)
+    if (is.null(I_inv))
+    {
+        stderr <- rep(NaN, 5)
+        names(stderr) <- c("lambda", "mu1", "mu2", "sigma1", "sigma2")
+        return(stderr)
+    } else 
+    {
+        stderr <- diag(I_inv)
+        names(stderr) <- c("lambda", "mu1", "mu2", "sigma1", "sigma2")
+        return(sqrt(stderr))
+    }
 }
 
 get_theta_from_vec <- function(theta)

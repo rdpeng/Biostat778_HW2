@@ -16,6 +16,6 @@ URL: https://github.com/jkpr/Biostat778_HW2
 Collate:
     'aux-funcs.R'
     'em.R'
+    'hw2_data.R'
     'mixture.R'
     'newton.R'
-    'peng_data.R'

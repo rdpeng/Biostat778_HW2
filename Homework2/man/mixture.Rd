@@ -44,8 +44,8 @@ theta <- list(lambda=0.5, mu1=-2, mu2=2, simga1=1, sigma2=1)
 mixture(y, "newton", param0=unlist(theta))
 mixture(y, "EM", param0=unlist(theta))
 \dontrun{
-head(peng_data, 20)
-mixture(peng_data, "EM")
+head(hw2_data, 20)
+mixture(hw2_data, "EM")
 }
 }
 

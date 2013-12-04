@@ -1,6 +1,6 @@
 \docType{data}
-\name{peng_data}
-\alias{peng_data}
+\name{hw2_data}
+\alias{hw2_data}
 \title{Peng's test dataset}
 \description{
   This dataset comes from a mixture distribution of two
