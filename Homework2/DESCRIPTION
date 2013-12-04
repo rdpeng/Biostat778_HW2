@@ -1,0 +1,9 @@
+Package: Homework2
+Type: Package
+Title: Estimate the unknown parameters of a mixture of 2 Normal distributions
+Version: 1.0
+Date: 2013-12-04
+Author: Lu Li
+Maintainer: Lu Li <lli48@jhu.edu>
+Description: This package gives a function to estimate the unknown parameters of a mixture of 2 Normal distributions using Newtons Method or EM Algorithm
+License: GPL
