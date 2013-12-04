@@ -2,7 +2,7 @@ mixture <- function(y, method, maxit = NULL, tol = 1e-08, param0 = NULL)
 {
       y <- unlist(y)
       n <- length(y)
-      method=match.arg(method,c("EM","newton"))
+      method <- match.arg(method, c("EM", "newton"))
       
       ## Choose param0 if NULL is given
       ## parameter is of the form (lambda, mu1, mu2, sigma1, sigma2)
