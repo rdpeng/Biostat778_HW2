@@ -1,0 +1,9 @@
+Package: Homework2
+Type: Package
+Title: Mixture of two normal distributions
+Version: 1.0
+Date: 2013-12-04
+Author: Yuan He
+Maintainer: Yuan He <yhe23@jhu.eud>
+Description: This package lets the users to approximate mixture of two normal distributions using Newton or EM algorithm.
+License: GPL
