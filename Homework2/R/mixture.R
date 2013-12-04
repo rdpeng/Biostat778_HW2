@@ -1,6 +1,5 @@
 mixture = function(y, method, maxit = NULL, tol = 1e-08, param0 = NULL) {
-     # set.seed(5)
-     # y = c(rnorm(20,5,1),rnorm(20,10,2))
+     y = unlist(y)
      tryCatch( {
           method = match.arg(method,choices=c("newton","EM"))
      }, error = function(err) {
@@ -15,15 +14,6 @@ mixture = function(y, method, maxit = NULL, tol = 1e-08, param0 = NULL) {
      }
      if (is.null(param0)) {
           # Choose initial parameters
-#           ysorted = sort(y)
-#           upperindex = floor(length(ysorted)/2)
-#           group1 = ysorted[1:upperindex]
-#           group2 = ysorted[(upperindex+1):length(y)]
-#           lambda = .5
-#           mu1 = mean(group1)
-#           mu2 = mean(group2)
-#           sigma1 = sd(group1)
-#           sigma2 = sd(group2)
           clusters = kmeans(y,centers=2)
           mu1 = clusters$center[1]
           mu2 = clusters$center[2]
@@ -63,6 +53,7 @@ mixture = function(y, method, maxit = NULL, tol = 1e-08, param0 = NULL) {
 #                hessmu2 = sum(hess[(12*n+1):(13*n)])
 #                hesssig1 = sum(hess[(18*n+1):(19*n)])
 #                hesssig2 = sum(hess[(24*n+1):(25*n)])
+               
                # Newton directions
                p = solve(hess)%*%grad
 #                plam = -(1/hesslam)*gradlam
@@ -70,6 +61,7 @@ mixture = function(y, method, maxit = NULL, tol = 1e-08, param0 = NULL) {
 #                pmu2 = -(1/hessmu2)*gradmu2
 #                psigma1 = -(1/hesssig1)*gradsig1
 #                psigma2 = -(1/hesssig2)*gradsig2
+               
                # Find new theta
                theta_new = theta + p
 #                lambda = lambda + plam
@@ -77,6 +69,7 @@ mixture = function(y, method, maxit = NULL, tol = 1e-08, param0 = NULL) {
 #                mu2 = mu2 + pmu2
 #                sigma1 = sigma1 + psigma1
 #                sigma2 = sigma2 + psigma2
+               
                # Calculate diff and update
 #                diff = plam + pmu1 + pmu2 + psigma1 + psigma2
                diff = sum(abs(theta_new-theta))
