@@ -3,8 +3,8 @@ get_expected_z <- function(y, theta)
     lambda <- theta$lambda
     mu1 <- theta$mu1
     mu2 <- theta$mu2
-    sigma1 <- sqrt(theta$var1)
-    sigma2 <- sqrt(theta$var2)
+    sigma1 <- theta$sigma1
+    sigma2 <- theta$sigma2
     # BAYES' rule
     # P(N1 | Y=y) = P(Y=y | N1)*P(N1) / (P(Y=y | N1)*P(N1) + P(Y=y | N2)*P(N2))
     dnorm(y, mean=mu1, sd=sigma1)*lambda/ 
@@ -18,8 +18,8 @@ get_theta <- function(y, z)
     theta$lambda <- mean(z)
     theta$mu1 <- sum(z*y)/sum(z)
     theta$mu2 <- sum((1-z)*y)/sum(1-z)
-    theta$var1 <- sum(z*(y - theta$mu1)*(y - theta$mu1))/sum(z)
-    theta$var2 <- sum((1-z)*(y - theta$mu2)*(y - theta$mu2))/sum(1-z)
+    theta$sigma1 <- sqrt(sum(z*(y - theta$mu1)*(y - theta$mu1))/sum(z))
+    theta$sigma2 <- sqrt(sum((1-z)*(y - theta$mu2)*(y - theta$mu2))/sum(1-z))
     theta
 }
 

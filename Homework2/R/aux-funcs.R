@@ -5,11 +5,11 @@ get_lik_one <- function(theta, yi)
     lambda <- theta[[1]]
     mu1 <- theta[[2]]
     mu2 <- theta[[3]]
-    var1 <- theta[[4]]
-    var2 <- theta[[5]]
+    sigma1 <- theta[[4]]
+    sigma2 <- theta[[5]]
     log(
-        lambda/(2*pi*var1)^(1/2)*exp(-(yi-mu1)*(yi-mu1)/(2*var1)) +
-        (1-lambda)/(2*pi*var2)^(1/2)*exp(-(yi-mu2)*(yi-mu2)/(2*var2))    
+        lambda/(2*pi*sigma1^2)^(1/2)*exp(-(yi-mu1)*(yi-mu1)/(2*sigma1^2)) +
+        (1-lambda)/(2*pi*sigma2^2)^(1/2)*exp(-(yi-mu2)*(yi-mu2)/(2*sigma2^2))    
     )
 }
 
@@ -50,15 +50,15 @@ get_initial_theta <- function(y)
         theta$lambda <- length(f1)/length(y)
         theta$mu1 <- arg_max_x[1]
         theta$mu2 <- arg_max_x[2]
-        theta$var1 <- var(f1)
-        theta$var2 <- var(f2)
+        theta$sigma1 <- sd(f1)
+        theta$sigma2 <- sd(f2)
     } else if (length(arg_max_x) == 1)
     {
         theta$lambda <- 0.5
         theta$mu1 <- arg_max_x - sqrt(var(y))*0.05
         theta$mu2 <- arg_max_x + sqrt(var(y))*0.05
-        theta$var1 <- var(y)
-        theta$var2 <- var(y)
+        theta$sigma1 <- sd(y)
+        theta$sigma2 <- sd(y)
     } else 
     {
         stop("Density of y has no maximum. Strange things are happening!")
@@ -85,28 +85,58 @@ check_convergence <- function(old_theta, new_theta, tol=1e-8,
     }
 }
 
-get_information <- function(y, theta)
+get_derivs <- function()
 {
     # Observed data likelihood
     log_lik <- expression(
         log(
-            lambda/(2*pi*s1^2)^(1/2)*exp(-(yi-mu1)*(yi-mu1)/(2*s1^2)) +
-                (1-lambda)/(2*pi*s2^2)^(1/2)*exp(-(yi-mu2)*(yi-mu2)/(2*s2^2))    
+            lambda/(2*pi*sigma1^2)^(1/2)*
+            exp(-(yi-mu1)*(yi-mu1)/(2*sigma1^2)) +
+            (1-lambda)/(2*pi*sigma2^2)^(1/2)*
+            exp(-(yi-mu2)*(yi-mu2)/(2*sigma2^2))    
         )
     )
-    derivs <- deriv3(log_lik, c("lambda","mu1","mu2","s1","s2"))
+    derivs <- deriv3(log_lik, c("lambda","mu1","mu2","sigma1","sigma2"))
+    return(derivs)
+}
+
+get_derivs_param <- function()
+{
+    log_lik_param <- expression(
+        log(
+            1/(1+exp(-lambda))*1/(2*pi*exp(2*sigma1))^(1/2)*
+                exp(-(yi-mu1)*(yi-mu1)/(2*exp(2*sigma1))) +
+                (1-1/(1+exp(-lambda)))*1/(2*pi*exp(2*sigma2))^(1/2)*
+                exp(-(yi-mu2)*(yi-mu2)/(2*exp(2*sigma2)))    
+        )
+    )
+    derivs <- deriv3(log_lik_param, c("lambda","mu1","mu2","sigma1","sigma2"))
+    return(derivs)
+}
+
+get_information <- function(y, theta)
+{
+    # Observed data likelihood
+    derivs <- get_derivs()
     
     single_point_scores <- lapply(y, function(yi){
         lambda <- theta$lambda
         mu1 <- theta$mu1
         mu2 <- theta$mu2
-        s1 <- sqrt(theta$var1)
-        s2 <- sqrt(theta$var2)
+        sigma1 <- theta$sigma1
+        sigma2 <- theta$sigma2
         score <- drop(attr(eval(derivs),"grad"))
         tcrossprod(score)
     })
     score_sum <- Reduce("+", single_point_scores)
     score_sum / length(y)
+}
+
+get_error_vec <- function()
+{
+    vec <- rep(NaN, 5)
+    names(vec) <- c("lambda", "mu1", "mu2", "sigma1", "sigma2")
+    return(vec)
 }
 
 get_stderr <- function(y, theta)
@@ -120,9 +150,7 @@ get_stderr <- function(y, theta)
     })
     if (is.null(I_inv))
     {
-        stderr <- rep(NaN, 5)
-        names(stderr) <- c("lambda", "mu1", "mu2", "sigma1", "sigma2")
-        return(stderr)
+        return(get_error_vec())
     } else 
     {
         stderr <- diag(I_inv)
@@ -135,15 +163,13 @@ get_theta_from_vec <- function(theta)
 {
     names(theta) <- NULL
     new_theta <- list(lambda=theta[1], mu1=theta[2], mu2=theta[3], 
-                      var1=theta[4]*theta[4], var2=theta[5]*theta[5])
+                      sigma1=theta[4], sigma2=theta[5])
     new_theta
 }
 
 get_return_theta <- function(theta)
 {
     new_theta <- unlist(theta)
-    new_theta[4] <- sqrt(new_theta[4])
-    new_theta[5] <- sqrt(new_theta[5])
     names(new_theta) <- c("lambda","mu1","mu2","sigma1","sigma2")
     new_theta
 }
@@ -151,15 +177,15 @@ get_return_theta <- function(theta)
 param <- function(theta)
 {
     theta$lambda <- log(theta$lambda/(1-theta$lambda))
-    theta$var1 <- log(theta$var1)
-    theta$var2 <- log(theta$var2)
+    theta$sigma1 <- log(theta$sigma1)
+    theta$sigma2 <- log(theta$sigma2)
     theta
 }
 
 unparam <- function(theta)
 {
     theta$lambda <- 1/(1+exp(-theta$lambda))
-    theta$var1 <- exp(theta$var1)
-    theta$var2 <- exp(theta$var2)
+    theta$sigma1 <- exp(theta$sigma1)
+    theta$sigma2 <- exp(theta$sigma2)
     theta
 }
