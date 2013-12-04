@@ -1,0 +1,9 @@
+Package: Homework2
+Type: Package
+Title: Estimate mle and standard error for mixture model parameters
+Version: 1.0
+Date: 2013-11-20
+Author: Yuxin(Daisy) Zhu
+Maintainer: Yuxin(Daisy) Zhu <yuzhu@jhsph.edu>
+Description: This package contains one function that estimates MLE and corresponding standard error, for a mixture model of two normal components, using either EM or newton algorithm.
+License: GPL-2
