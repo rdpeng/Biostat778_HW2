@@ -138,7 +138,6 @@ mixture <- function(y, method, maxit = NULL, tol = 1e-08, param0 = NULL)
       {
             score <- score + grad[i, ] %*% t(grad[i, ])
       }
-      score <- score
       sd <- c(sqrt(diag(solve(score))))
 
       
