@@ -1,0 +1,9 @@
+Package: Homework2
+Type: Package
+Title: Advanced Statistics Computing HW1 EM and Newton Appreciation
+Version: 1.0
+Date: 2013-12-03
+Author: Yu Du<ydu@jhsph.edu>
+Maintainer: Yu Du<ydu@jhsph.edu>
+Description: Homework 2 in Advanced Statistics Computing Class which includes two algorithm realization.One is Newton method and the other is EM algorithm.
+License: GPL
