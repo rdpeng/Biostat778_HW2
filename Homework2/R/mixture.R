@@ -91,7 +91,7 @@ tolr = (lambda-ilambda)^2+(mu1-imu1)^2+(mu2-imu2)^2+(sig1-isig1)^2+(sig2-isig2)^
 if(tolr < 1e-08)
 break
 }
-# Information Matrix
+# Information Matrix (using complete data)
 bp = lambda*dnorm(y,mu1,sqrt(sig1))/(lambda*dnorm(y,mu1,sqrt(sig1))+(1-lambda)*dnorm(y,mu2,sqrt(sig2)))
 Slambda = bp/lambda-(1-bp)/(1-lambda)
 Smu1 = bp*(y-mu1)/sig1^2
