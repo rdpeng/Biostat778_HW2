@@ -8,4 +8,3 @@ Maintainer: Detian Deng <ddeng@jhsph.edu>
 Description: Apply Newton and EM algorithm to estimate gaussian mixture model
 License: GPL-2
 Packaged: 2013-12-05 00:28:51 UTC; dengdetian0603
-Built: R 3.0.2; ; 2013-12-05 00:28:59 UTC; unix
