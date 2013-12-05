@@ -1,5 +1,7 @@
 mixture <-
 function(y, method, maxit = NULL, tol = 1e-08, param0 = NULL) {
+
+  method=match.arg(method,c("EM","newton"))
   mle=vector(length=5);stderr=vector(length=5)
   if (is.null(param0)==TRUE){
     lambda1=0.5;lambda2=0.5;mu1=10.5;sigma1=59;mu2=20.5;sigma2=249
