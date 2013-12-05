@@ -1,0 +1,11 @@
+Package: Homework2
+Type: Package
+Title: Homework2
+Version: 1.0
+Date: 2013-12-04
+Author: Detian Deng
+Maintainer: Detian Deng <ddeng@jhsph.edu>
+Description: Apply Newton and EM algorithm to estimate gaussian mixture model
+License: GPL-2
+Packaged: 2013-12-05 00:28:51 UTC; dengdetian0603
+Built: R 3.0.2; ; 2013-12-05 00:28:59 UTC; unix
