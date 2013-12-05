@@ -1,0 +1,10 @@
+Package: Homework2
+Type: Package
+Title: What the package does (short line)
+Version: 1.0
+Date: 2013-12-04
+Author: Jerryppa
+Maintainer: Who to complain to <09fudansqy@gmail.com>
+Description: It can generate the mld for gaussian mixture using either EM or newton method
+License: GPL-2
+Built: R 3.0.1; ; 2013-12-05 03:06:15 UTC; unix
