@@ -1,0 +1,13 @@
+Package: Homework2
+Title: Homework2
+Description: Mixture models function
+Version: 0.1
+Author: Aaron Fisher <afisher@jhsph.edu>
+Maintainer: Aaron Fisher <afisher@jhsph.edu>
+Depends:
+    R (>= 3.0.2)
+License: GPL-2
+LazyData: true
+Collate:
+    'mixture.r'
+    'Homework2-package.r'
