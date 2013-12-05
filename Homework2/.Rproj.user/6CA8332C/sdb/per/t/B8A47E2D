@@ -1,0 +1,17 @@
+{
+    "contents" : "\\name{mixture}\n\\alias{mixture}\n\\title{\nMixture\n}\n\\description{\nCalculate MLEs using NR and EM\n}\n\\usage{\nmixture(y, method, maxit = NULL, tol = 1e-08, param0 = NULL)\n}\n\n\\arguments{\n  \\item{y}{inputing data}\n  \\item{method}{choosing either \"Newton\" or \"EM\"}\n  \\item{maxit}{maximum number of iteration}\n  \\item{tol}{tolerence}\n  \\item{param0}{starting value}\n}",
+    "created" : 1386201982890.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4195708457",
+    "id" : "B8A47E2D",
+    "lastKnownWriteTime" : 1386202278,
+    "path" : "~/Desktop/AdvStatComp/Homework2/man/mixture.Rd",
+    "project_path" : "man/mixture.Rd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_doc"
+}
