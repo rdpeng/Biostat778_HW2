@@ -1,0 +1,16 @@
+{
+    "contents" : "\\name{Homework2-package}\n\\alias{Homework2-package}\n\\alias{Homework2}\n\\docType{package}\n\\title{ML estimation using NR and EM algorithms.}\n\\description{Return MLEs for a mixture distribution with two normal components}\n\\details{\n\\tabular{ll}{\nPackage: \\tab Homework2\\cr\nType: \\tab Package\\cr\nVersion: \\tab 1.0\\cr\nDate: \\tab 2013-12-04\\cr\nLicense: \\tab GPL-2\\cr\n}\n\n}\n\\author{Oliver (slightly) Awesome\n}\n",
+    "created" : 1386200652710.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2821196278",
+    "id" : "46B6FF5",
+    "lastKnownWriteTime" : 1386201666,
+    "path" : "~/Desktop/AdvStatComp/Homework2/man/Homework2-package.Rd",
+    "project_path" : "man/Homework2-package.Rd",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_doc"
+}

@@ -1,0 +1,9 @@
+Package: Homework2
+Type: Package
+Title: MLE estimation utilizing NR and EM Algorithm
+Version: 1.0
+Date: 2013-12-04
+Author: Oliver Chen
+Maintainer: <olivery.chen@gmail.com>
+Description: Calculating MLEs for a mixture distribution with two normal components
+License: GPL-2
