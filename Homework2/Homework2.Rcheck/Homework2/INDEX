@@ -1,0 +1,5 @@
+Homework2-package       Generate mle for gaussian mixture What the
+                        package does (short line) ~~ package title ~~
+der                     To generate the gradient and Hessian of the
+                        likelihood function
+mixture                 Generate mle for gaussian mixture
